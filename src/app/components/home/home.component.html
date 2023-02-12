@@ -1,0 +1,16 @@
+<mat-form-field appearance="fill">
+  <mat-label>Teams</mat-label>
+  <mat-select id="teamInput"  [(value)]="selectedTeam">
+    <mat-option *ngFor="let team of teams" [value]="team">
+      {{team.full_name}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<button id="trackBtn" class="m-2" mat-raised-button color="primary" [disabled]="!selectedTeam" (click)="trackTeam()">
+  Track Team
+</button>
+<div class="row">
+  <div *ngFor="let game of games" class="col-4">
+    <app-games [games]="game" [idTeam]="game.idTeam" (remove)="remove($event)"></app-games>
+  </div>
+</div>
